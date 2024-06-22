@@ -16,6 +16,7 @@ import Billing from './billing'
 import Invoices from './invoices'
 import style from './style.less'
 import DangerZone from './danger_zone'
+import Calendar from './calender'
 
 export default function AccountEdit() {
 	let [user, setUser] = useState<User>({})
@@ -157,6 +158,7 @@ export default function AccountEdit() {
 			<Invoices />
 			<TokenList />
 			<DangerZone />
+			<Calendar />
 		</div>
 	)
 }
