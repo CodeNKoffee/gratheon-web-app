@@ -1,19 +1,30 @@
-import React, { useState } from 'react'; // Import React and useState hook
+import React, { useEffect, useState } from 'react'; // Import React and useState hook
 import Button from "@/components/shared/button";
 import ErrorMsg from "@/components/shared/messageError";
 import T from "@/components/shared/translate";
 import { gql, useQuery, useMutation } from '@/components/api/index'
 
 export default function Calendar() {
-  const [error, setError] = useState(null); 
+
+  const [isSynced, setIsSynced] = useState<boolean>(false);
+  const [error, setError] = useState(null);
+  
+  // console.log("After reload: " + isSynced);
 
   const syncGoogleCalendar = async () => {
     try {
-      console.log('syncing google calendar');
+      console.log(`${isSynced ? "Unsyncing" : "Syncing"} Google Calendar...`);
+      setTimeout(() => {
+        setIsSynced(!isSynced);
+      }, 5000);
     } catch(e) {
       setError(e); 
     }
   }
+
+  useEffect(() => {
+    console.log(`${isSynced ? "Synced" : "Unsynced"} Google Calendar successfully!`);
+  }, [isSynced]);
   
   return(
     <div style={{ border: '1px solid black', borderRadius: '8px', padding: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
@@ -30,7 +41,7 @@ export default function Calendar() {
         color='black' 
         onClick={syncGoogleCalendar}
       >
-        <T>Connect</T>
+        <T>{isSynced ? "Disconnect" : "Connect"}</T>
       </Button>
     </div>
   );
