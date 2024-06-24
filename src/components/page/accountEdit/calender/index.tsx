@@ -38,7 +38,7 @@ export default function Calendar() {
         </p>
       </div>
       <Button 
-        color='black' 
+        color='grey' 
         onClick={syncGoogleCalendar}
       >
         <T>{isSynced ? "Disconnect" : "Connect"}</T>
