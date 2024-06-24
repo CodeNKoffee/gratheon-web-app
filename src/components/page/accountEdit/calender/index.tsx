@@ -2,6 +2,7 @@ import React, { useState } from 'react'; // Import React and useState hook
 import Button from "@/components/shared/button";
 import ErrorMsg from "@/components/shared/messageError";
 import T from "@/components/shared/translate";
+import { gql, useQuery, useMutation } from '@/components/api/index'
 
 export default function Calendar() {
   const [error, setError] = useState(null); 

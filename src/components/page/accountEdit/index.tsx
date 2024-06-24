@@ -127,7 +127,7 @@ export default function AccountEdit() {
 		>
 
 			<ErrorMsg error={error} />
-			<div style={{ border: '1px solid black', borderRadius: '8px', padding: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
+			<div style={{ border: '1px solid black', borderRadius: '8px', padding: '16px'}}>
 				<div style="display:flex;">
 					<VisualForm style="display: table;width:auto;flex-grow:1" onSubmit={onSubmit}>
 						<div>
