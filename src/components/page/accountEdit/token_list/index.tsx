@@ -64,7 +64,7 @@ const TokenList: React.FC = () => {
 	};
 
 	return (
-		<div style="padding:10px;border: 1px solid gray;border-radius:5px;">
+		<div style={{ border: '1px solid black', borderRadius: '8px', padding: '16px' }}>
 			<h3><T>API tokens</T></h3>
 			<p>
 				<T>API tokens are used to authenticate your requests to our API. You can create multiple tokens to use in different applications.</T>
