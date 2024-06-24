@@ -19,7 +19,7 @@ export default function Calendar() {
       {error && <ErrorMsg error={error} />} 
       <div>
         <h3>
-          <T>Never Miss a Beat: Sync Your Gratheon Schedule with Google Calendar</T>
+          <T>Sync Your Gratheon Schedule with Google Calendar</T>
         </h3>
         <p>
           <T>Effortlessly manage your time. Sync your Gratheon tasks with Google Calendar for a centralized view and automatic updates.</T>
