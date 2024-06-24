@@ -5,14 +5,13 @@ import T from "@/components/shared/translate";
 import "./Calendar.css"
 
 export default function Calendar() {
-  const [error, setError] = useState(null); // Initialize state for error
+  const [error, setError] = useState(null); 
 
   const syncGoogleCalendar = async () => {
     try {
       console.log('syncing google calendar');
-      // Here you would add the logic to sync with Google Calendar
     } catch(e) {
-      setError(e); // Set error state if an exception occurs
+      setError(e); 
     }
   }
   
@@ -28,7 +27,7 @@ export default function Calendar() {
         </p>
       </div>
       <Button 
-        color='blue' 
+        color='black' 
         onClick={syncGoogleCalendar}
       >
         <T>Connect</T>
