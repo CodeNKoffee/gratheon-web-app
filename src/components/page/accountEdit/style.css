@@ -1,0 +1,18 @@
+#account_edit {
+  padding: 8px;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+#account_edit div {
+  margin: 0 0 16px;
+}
+#account_edit h2 {
+  padding: 10px 0;
+}
+@media all and (min-width: 414px) {
+  #account_edit {
+    padding: 20px;
+  }
+}

@@ -96,7 +96,10 @@ export default function AccountEdit() {
 	}
 
 	return (
-		<div id={style.account_edit}>
+		<div 
+			id={style.account_edit}
+			style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}
+		>
 
 			<ErrorMsg error={error} />
 			<div style="padding: 10px; border: 1px solid black; margin-bottom: 5px; border-radius: 5px;">
