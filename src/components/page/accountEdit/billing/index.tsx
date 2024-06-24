@@ -62,13 +62,13 @@ export default function Billing({ user }) {
 	const dateLangOptions = { locale: loadedDateLocales[user.lang] }
 
 	return (
-		<div>
+		<>
 			{stripeStatus === 'success' && (
 				<MessageSuccess title={<T>Payment completed</T>} />
 			)}
 			{stripeStatus === 'cancel' && <MessageError error={<T>Payment was cancelled</T>} />}
 
-			<div style="margin-bottom:5px; border: 1px dotted gray; padding: 10px; border-radius: 5px;">
+			<div style={{ border: '1px solid black', borderRadius: '8px', padding: '16px' }}>
 				<h3><T ctx="this is a headline for billing form">Billing</T></h3>
 
 				{expirationError}
@@ -108,6 +108,6 @@ export default function Billing({ user }) {
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	)
 }

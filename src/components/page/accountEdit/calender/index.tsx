@@ -2,7 +2,6 @@ import React, { useState } from 'react'; // Import React and useState hook
 import Button from "@/components/shared/button";
 import ErrorMsg from "@/components/shared/messageError";
 import T from "@/components/shared/translate";
-import "./Calendar.css"
 
 export default function Calendar() {
   const [error, setError] = useState(null); 
@@ -16,7 +15,7 @@ export default function Calendar() {
   }
   
   return(
-    <div style={{ border: '2px solid black', borderRadius: '8px', padding: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
+    <div style={{ border: '1px solid black', borderRadius: '8px', padding: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
       {error && <ErrorMsg error={error} />} 
       <div>
         <h3>

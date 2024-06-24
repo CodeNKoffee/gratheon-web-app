@@ -10,11 +10,13 @@ import type { User } from '@/components/models/user'
 import { getUser, updateUser } from '@/components/models/user'
 import T from '@/components/shared/translate'
 import VisualFormSubmit from '@/components/shared/visualForm/VisualFormSubmit'
+import Loading from '@/components/shared/loader'
+import MessageError from '@/components/shared/messageError'
 
 import TokenList from './token_list'
 import Billing from './billing'
 import Invoices from './invoices'
-import style from './style.less'
+import styles from './style.less'
 import DangerZone from './danger_zone'
 import Calendar from './calender'
 
@@ -95,14 +97,37 @@ export default function AccountEdit() {
 		return <Loader />
 	}
 
+	let {
+		data: invoices,
+		loading: loadingInvoices,
+		error: errorInvoices,
+	} = useQuery(gql`
+		query getInvoices {
+			invoices {
+				url
+				date
+				total
+				currency
+			}
+		}
+	`)
+
+	if (errorInvoices) {
+		return <MessageError error={errorInvoices} />
+	}
+
+	if (loadingInvoices) {
+		return <Loading />
+	}
+
 	return (
 		<div 
-			id={style.account_edit}
-			style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}
+			id={styles.settings}
+			// style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}
 		>
 
 			<ErrorMsg error={error} />
-			<div style="padding: 10px; border: 1px solid black; margin-bottom: 5px; border-radius: 5px;">
+			<div style={{ border: '1px solid black', borderRadius: '8px', padding: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
 				<div style="display:flex;">
 					<VisualForm style="display: table;width:auto;flex-grow:1" onSubmit={onSubmit}>
 						<div>
@@ -158,10 +183,10 @@ export default function AccountEdit() {
 			</div>
 
 			<Billing user={userStored} />
-			<Invoices />
+			{invoices?.invoices?.length > 0 && <Invoices />}
 			<TokenList />
-			<DangerZone />
 			<Calendar />
+			<DangerZone />
 		</div>
 	)
 }
