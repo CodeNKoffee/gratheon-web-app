@@ -2,15 +2,11 @@ import React, { useEffect, useState } from 'react'; // Import React and useState
 import Button from "@/components/shared/button";
 import ErrorMsg from "@/components/shared/messageError";
 import T from "@/components/shared/translate";
-import { gql, useQuery, useMutation } from '@/components/api/index'
 
 export default function Calendar() {
-
   const [isSynced, setIsSynced] = useState<boolean>(false);
   const [error, setError] = useState(null);
   
-  // console.log("After reload: " + isSynced);
-
   const syncGoogleCalendar = async () => {
     try {
       console.log(`${isSynced ? "Unsyncing" : "Syncing"} Google Calendar...`);
