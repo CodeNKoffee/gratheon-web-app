@@ -29,4 +29,5 @@ const getAccessToken = (oAuth2Client) => {
     scope: SCOPES,
   });
   console.log('Authorize this app by visiting this url:', authUrl);
+  return authUrl;
 };
