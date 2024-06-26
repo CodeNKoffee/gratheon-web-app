@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Button from "@/components/shared/button";
 import ErrorMsg from "@/components/shared/messageError";
 import T from "@/components/shared/translate";
+import { authenticate } from '@/components/api/googleApi';
 
 export default function Calendar() {
   const [isSynced, setIsSynced] = useState<boolean>(false);
