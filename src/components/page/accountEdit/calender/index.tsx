@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'; // Import React and useState hook
+import { useEffect, useState } from 'react';
 import Button from "@/components/shared/button";
 import ErrorMsg from "@/components/shared/messageError";
 import T from "@/components/shared/translate";
