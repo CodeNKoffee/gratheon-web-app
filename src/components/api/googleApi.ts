@@ -31,3 +31,7 @@ const getAccessToken = (oAuth2Client) => {
   console.log('Authorize this app by visiting this url:', authUrl);
   return authUrl;
 };
+
+export const setToken = (token) => fs.writeFileSync(TOKEN_PATH, JSON.stringify(token));
+
+export const removeToken = () => fs.existsSync(TOKEN_PATH) && fs.unlinkSync(TOKEN_PATH);

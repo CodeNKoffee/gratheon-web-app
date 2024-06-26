@@ -8,25 +8,35 @@ export default function Calendar() {
   const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
   const [error, setError] = useState(null);
   const [authUrl, setAuthUrl] = useState<string>('');
-  
-  const syncGoogleCalendar = async () => {
+
+  const checkAuthorization = async () => {
     try {
-      const authResult = authenticate();
-      if (typeof authResult === 'string') {
-        setAuthUrl(authResult);
+      const data = await (await fetch('/api/auth')).json();
+      if (data.authUrl) {
+        setAuthUrl(data.authUrl);
         setIsAuthorized(false);
       } else {
-        console.log(`${isAuthorized ? "Unsyncing" : "Syncing"} Google Calendar...`);
-        setIsAuthorized(!isAuthorized);
+        setIsAuthorized(true);
       }
-    } catch(e) {
-      setError(e); 
+    } catch (e) {
+      setError(e);
     }
-  }
+  };
+  
+  const syncGoogleCalendar = async () => {
+    if (isAuthorized) {
+      await fetch('/api/disconnect', { method: 'POST' });
+      setIsAuthorized(false);
+      console.log("Unsynced Google Calendar");
+    } else {
+      await checkAuthorization();
+      console.log("Syncing Google Calendar...");
+    }
+  };
 
   useEffect(() => {
-    console.log(`${isAuthorized ? "Synced" : "Unsynced"} Google Calendar successfully!`);
-  }, [isAuthorized]);
+    checkAuthorization();
+  }, []);
   
   return(
     <div style={{ border: '1px solid black', borderRadius: '8px', padding: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
