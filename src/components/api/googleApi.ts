@@ -1,8 +1,9 @@
-const { google } = require('googleapis');
+import { google } from "googleapis";
 
 // Load client secrets from a local file.
-const fs = require('fs');
-const path = require('path');
+import fs from "fs";
+import path from "path";
+
 const SCOPES = ['https://www.googleapis.com/auth/calendar'];
 const TOKEN_PATH = path.join(__dirname, 'token.json');
 
@@ -28,6 +29,4 @@ const getAccessToken = (oAuth2Client) => {
     scope: SCOPES,
   });
   console.log('Authorize this app by visiting this url:', authUrl);
-  // Redirect user to the authUrl and get the code from the query string, then call:
-  // oAuth2Client.getToken(code, (err, token) => { if (err) return console.error('Error retrieving access token', err); oAuth2Client.setCredentials(token); fs.writeFileSync(TOKEN_PATH, JSON.stringify(token)); });
 };
